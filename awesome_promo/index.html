@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>      
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main__loader active">
+        <div class="loader">
+            <div class="c-lvl-1"></div>
+            <div class="c-lvl-2"></div>
+            <div class="c-lvl-3"></div>
+            <div class="c-lvl-info">
+                <h2 class="info--title">Вашу <b>ВИГОДУ</b> від <b>Steko</b> ми вже загорнули та відправили в <b>sms</b>.
+                        </h2>
+                <div class="loader-logo">
+                    <img src="logo-loader.png" alt="" class="move-1">
+                    <img src="logo-loader-2.png" alt="" class="move-2">
+                    <img src="logo-final.png" alt=""class="move-3">
+                    <img src="logo-check.png" alt="" class="move-4">
+                </div>
+                <h2 class="info--subtitle">
+                        Ідеальних покупок зі <b>Steko</b>!
+                </h2>
+            </div>
+        </div>
+    </div>
+    <div class="main grey darken-1 disabled">
+        <div class="main__content row">
+            <div class="content__card card col s12">
+                <div class="card__bg"></div>
+                <div class="card__content">
+                    <div class="card__logo-part">
+                        <img src="logo.png" alt="logo" class="card--logo">
+                    </div>
+                    <div class="card__title-part">
+                        <h1 class="card--title">Введіть ім'я та номер телефону, щоб отримати <b>ВИГОДУ</b> від <b>Steko</b></h1>
+                    </div>
+                    <div class="card__from">
+                        <div class="input__container row">
+                            <div class="input-field col s12">
+                              <input id="name" type="text" class="validate">
+                              <label for="name">Iм'я</label>
+                            </div>
+                          </div>
+                          <div class="input__container row">
+                            <div class="input-field col s12">
+                              <input id="phone" type="text" class="validate">
+                              <label for="phone">Телефон</label>
+                            </div>
+                          </div>
+                        <button сlass="card--button">Отримати промокод</button>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            setTimeout(() => $('.move-1').show("puff", 1500), 500);
+            setTimeout(() => $('.move-1').fadeOut(1000), 2500);
+            setTimeout(() => $('.move-2').show("puff", 1500), 3500);
+            setTimeout(() => $('.move-2').fadeOut(1000), 5000);
+            setTimeout(() => $('.move-3').show('puff', 1500), 7000);
+            setTimeout(() => $('.move-3').fadeOut(1000), 9000);
+            setTimeout(() => {
+                $('.move-4').show(1500);
+                $('.loader').addClass('active');
+                $('.c-lvl-info .info--title').fadeIn(1000);
+                $('.c-lvl-info .info--subtitle').fadeIn(1000);
+                }, 10000);
+
+        });
+    </script>
+</body>
+</html>
