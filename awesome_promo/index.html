@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="main__loader active">
+    <div class="main__loader">
         <div class="loader">
             <div class="c-lvl-1"></div>
             <div class="c-lvl-2"></div>
@@ -27,10 +27,10 @@
                 <h2 class="info--title">Вашу <b>ВИГОДУ</b> від <b>Steko</b> ми вже загорнули та відправили в <b>sms</b>.
                         </h2>
                 <div class="loader-logo">
-                    <img src="logo-loader.png" alt="" class="move-1">
-                    <img src="logo-loader-2.png" alt="" class="move-2">
-                    <img src="logo-final.png" alt=""class="move-3">
-                    <img src="logo-check.png" alt="" class="move-4">
+                    <img src="img/logo-loader.png" alt="" class="move-1">
+                    <img src="img/logo-loader-2.png" alt="" class="move-2">
+                    <img src="img/logo-final.png" alt=""class="move-3">
+                    <img src="img/loader-check.png" alt="" class="move-4">
                 </div>
                 <h2 class="info--subtitle">
                         Ідеальних покупок зі <b>Steko</b>!
@@ -38,13 +38,13 @@
             </div>
         </div>
     </div>
-    <div class="main grey darken-1 disabled">
+    <div class="main grey darken-1">
         <div class="main__content row">
             <div class="content__card card col s12">
                 <div class="card__bg"></div>
                 <div class="card__content">
                     <div class="card__logo-part">
-                        <img src="logo.png" alt="logo" class="card--logo">
+                        <img src="img/logo.png" alt="logo" class="card--logo">
                     </div>
                     <div class="card__title-part">
                         <h1 class="card--title">Введіть ім'я та номер телефону, щоб отримати <b>ВИГОДУ</b> від <b>Steko</b></h1>
@@ -62,7 +62,7 @@
                               <label for="phone">Телефон</label>
                             </div>
                           </div>
-                        <button сlass="card--button">Отримати промокод</button>
+                        <button class="card--button">Отримати промокод</button>
                         </div>
                 </div>
             </div>
@@ -71,18 +71,51 @@
 
     <script>
         $(document).ready(function(){
-            setTimeout(() => $('.move-1').show("puff", 1500), 500);
-            setTimeout(() => $('.move-1').fadeOut(1000), 2500);
-            setTimeout(() => $('.move-2').show("puff", 1500), 3500);
-            setTimeout(() => $('.move-2').fadeOut(1000), 5000);
-            setTimeout(() => $('.move-3').show('puff', 1500), 7000);
-            setTimeout(() => $('.move-3').fadeOut(1000), 9000);
-            setTimeout(() => {
-                $('.move-4').show(1500);
-                $('.loader').addClass('active');
-                $('.c-lvl-info .info--title').fadeIn(1000);
-                $('.c-lvl-info .info--subtitle').fadeIn(1000);
-                }, 10000);
+            const showLoader = () => {
+                setTimeout(() => $('.move-1').show("fade", 1500), 500);
+                setTimeout(() => $('.move-1').fadeOut(1000), 2500);
+                setTimeout(() => $('.move-2').show("fade", 1500), 3500);
+                setTimeout(() => $('.move-2').fadeOut(1000), 5000);
+                setTimeout(() => $('.move-3').show('fade', 1500), 7000);
+                setTimeout(() => $('.move-3').fadeOut(500), 10000);
+                setTimeout(() => {
+                    $('.move-4').show(1500);
+                    $('.loader').addClass('active');
+                    $('.c-lvl-info .info--title').fadeIn(1000);
+                    $('.c-lvl-info .info--subtitle').fadeIn(1000);
+                    }, 10000);
+            };
+
+             
+            $('.card--button').on('click', function(){
+                // Получаем данные клиента
+                let data = {
+                    phoneNumber: $('#phone').val(),
+                    clientName: $('#name').val()
+                };
+
+                // Отправляем данные на проверку
+                $.ajax({
+                    url: 'http://httpbin.org/post',
+                    method: `post`,
+                    data: data,
+                    success: function (result) {
+                        // Если номер есть в базе сообщаем об ошибке
+                        if(result.hasReg){
+                            alert('Номер уже использовался');
+                        // Если все ОК, запускеаться анимация лоадера
+                        }else{
+                            $('.main').addClass('disabled');
+                            $('.main__loader').addClass('active');
+
+                            setTimeout(showLoader, 500);
+                        }
+                    }
+                })
+            })
+            
+
+               
 
         });
     </script>

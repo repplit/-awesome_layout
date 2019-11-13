@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .main {
   position: absolute;
   height: 100%;
@@ -62,7 +63,8 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding-top: 8%;
+  position: absolute;
+  top: 5%;
 }
 
 .main .main__content .card .card__content .card__logo-part .card--logo {
@@ -71,7 +73,8 @@
 
 .main .main__content .card .card__content .card__title-part {
   padding: 0 3.2vmax;
-  margin-top: 20%;
+  position: absolute;
+  top: 15%;
 }
 
 .main .main__content .card .card__content .card__title-part .card--title {
@@ -92,12 +95,21 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-top: 5vmax;
+  position: absolute;
+  bottom: 10%;
+  width: 100%;
 }
 
 .main .main__content .card .card__content .card__from .input__container {
-  width: 90%;
+  width: 95%;
   margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.main .main__content .card .card__content .card__from .input__container .input-field {
+  margin: 2%;
 }
 
 .main .main__content .card .card__content .card__from .input__container input {
@@ -106,10 +118,11 @@
 
 .main .main__content .card .card__content .card__from .input__container label {
   color: #4c4646;
+  font-size: 2.6vmax;
 }
 
 .main .main__content .card .card__content .card__from button {
-  padding: 1.2vmax 4vmax;
+  padding: 1.6vmax 4vmax;
   color: #ffffff;
   font-family: Montserrat;
   font-size: 2.4vmax;
@@ -119,6 +132,14 @@
   border: none;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#138871), to(#0a4439));
   background-image: linear-gradient(180deg, #138871 0%, #0a4439 100%);
+  width: 85%;
+}
+
+.main__loader {
+  position: absolute;
+  overflow: hidden;
+  width: 0;
+  height: 0;
 }
 
 .main__loader.active {
@@ -136,6 +157,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  overflow: hidden;
 }
 
 .main__loader.active .loader {
@@ -165,10 +187,10 @@
 
 .main__loader.active .loader.active .c-lvl-info .info--title {
   position: absolute;
-  top: -36vmax;
+  top: -30vmax;
   font-size: 3.5vmax;
-  width: 90vmin;
-  left: -43%;
+  width: 86vmin;
+  left: -38%;
   text-align: center;
   color: #d6fff7;
 }
@@ -223,43 +245,47 @@
   display: none;
 }
 
-.main__loader.active .loader .c-lvl-info .loader-logo img.move-2, .main__loader.active .loader .c-lvl-info .loader-logo img.move-3 {
-  width: 37vw;
+.main__loader.active .loader .c-lvl-info .loader-logo img.move-1, .main__loader.active .loader .c-lvl-info .loader-logo img.move-2, .main__loader.active .loader .c-lvl-info .loader-logo img.move-3 {
+  width: 30vmin;
+}
+
+.main__loader.active .loader .c-lvl-info .loader-logo img.move-4 {
+  width: 65vw;
 }
 
 .main__loader.active .loader .c-lvl-1 {
   position: absolute;
-  background: url(level-1.png);
+  background: url(img/c-lvl-1.png);
   width: 90vw;
   height: 87vw;
   background-size: contain;
   background-repeat: no-repeat;
-  -webkit-animation: 8s cubic-bezier(0.18, 0.89, 0.32, 1.28) 0s normal none infinite running rot1;
-          animation: 8s cubic-bezier(0.18, 0.89, 0.32, 1.28) 0s normal none infinite running rot1;
+  -webkit-animation: 8s ease 0s normal none infinite running rot1;
+          animation: 8s ease 0s normal none infinite running rot1;
 }
 
 .main__loader.active .loader .c-lvl-2 {
   position: absolute;
-  background: url(level-2.png);
-  width: 72vw;
-  height: 72vw;
+  background: url(img/с-lvl-2.png);
+  width: 77.4vw;
+  height: 77.4vw;
   background-size: contain;
   background-repeat: no-repeat;
   background-repeat: no-repeat;
-  -webkit-animation: 3s cubic-bezier(0.4, 0, 0.2, 1) 0s normal none infinite running rot2;
-          animation: 3s cubic-bezier(0.4, 0, 0.2, 1) 0s normal none infinite running rot2;
+  -webkit-animation: 3s ease 0s normal none infinite running rot2;
+          animation: 3s ease 0s normal none infinite running rot2;
 }
 
 .main__loader.active .loader .c-lvl-3 {
   position: absolute;
-  background: url(level-3.png);
+  background: url(img/c-lvl-3.png);
   width: 55vw;
   height: 55vw;
   background-size: contain;
   background-repeat: no-repeat;
   background-repeat: no-repeat;
-  -webkit-animation: 5s ease-in-out 0s normal none infinite running rot3;
-          animation: 5s ease-in-out 0s normal none infinite running rot3;
+  -webkit-animation: 5s ease 0s normal none infinite running rot3;
+          animation: 5s ease 0s normal none infinite running rot3;
 }
 
 @-webkit-keyframes rot1 {
