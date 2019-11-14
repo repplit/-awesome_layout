@@ -1,0 +1,466 @@
+*{
+      margin: 0;
+      padding: 0;
+}
+
+.content{
+      width: 100vw;
+      height: 100vh;
+      background: #6B7477;
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      @media screen and (min-width: 1040px){ 
+            align-items: flex-start; 
+            background: linear-gradient(45deg, #0000002b, #0000007d) ,url(../img/desktop_bg.png);
+            background-size: 110%;
+            background-repeat: no-repeat;
+            background-position: 9% 9%;
+      }
+
+      .main__loader{
+            display: none;
+
+            &.active{
+                  display: flex;
+                  position: absolute;
+                  width: 100%;
+                  height: 100%;
+                  z-index: 999;
+                  background: rgba(23, 42, 41, 0.9294117647058824);
+
+                  .loader{
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        position: relative;
+                        height: 100%;
+                        width: 100%;
+                        
+                        .lvl-1{
+                              background: url(../img/c-lvl-1.png);
+                              @media screen and (min-width: 1040px){ 
+                                    width: 34vw;
+                                    height: 33vw;
+                              }
+                              width: 87vw;
+                              height: 85vw;
+                              animation: 5s ease 1s normal none infinite running move-1, 
+                                    2s ease 0s normal none 1 running show1,
+                                    2.5s ease 8s normal forwards 1 running hide1;
+                        }
+
+                        .lvl-2{
+                              background: url(../img/c-lvl-2.png);
+                              @media screen and (min-width: 1040px){ 
+                                    width: 29vw;
+                                    height: 29vw;
+                              }
+                              width: 77vw;
+                              height: 76vw;
+                              animation: 3s ease 1.8s normal none infinite running move-2, 
+                                    3s ease 0s normal none 1 running show1,
+                                    2.5s ease 8.7s normal forwards 1 running hide1;
+                        }
+
+                        .lvl-3{
+                              background: url(../img/c-lvl-3.png);
+                              width: 55vw;
+                              height: 55vw;
+                              @media screen and (min-width: 1040px){ 
+                                    width: 21vw;
+                                    height: 21vw;
+                              }
+                              animation: 6s ease 2.3s normal none infinite running move-1, 
+                                          4s ease 0s normal none 1 running show1,
+                                          2.5s ease 9.3s normal forwards 1 running hide1;
+                        }
+
+                        .loader__circle{
+                              background-size: cover;
+                              background-position: center;
+                              position: absolute;
+                        }
+
+                        @keyframes show1 {
+                              0% {
+                                    opacity: 0;
+                              }
+                              100% {
+                                    opacity: 1;
+                              }
+                        }
+                        @keyframes hide1 {
+                              0% {
+                                    opacity: 1;
+                              }
+                              100% {
+                                    opacity: 0;
+                              }
+                        }
+
+
+                        @keyframes move-1 {
+                              0% {
+                                    transform: rotate(360deg);
+                              }
+                              100% {
+                                    transform: rotate(0deg);
+                              }
+                        }
+                        @keyframes move-2 {
+                              0% {
+                                    transform: rotate(360deg);
+                              }
+                              100% {
+                                    transform: rotate(0deg);
+                              }
+                        }
+
+                        .lvl-content{
+                              height: 100%;
+                              width: 100%;
+                              display: flex;
+                              justify-content: center;
+                              align-items: center;
+
+                              .circle--title{
+                                    opacity: 0;
+                                    position: absolute;
+                                    top: 10%;
+                                    text-align: center;
+                                    animation: 0.5s cubic-bezier(0.46, 0.19, 1, 0.74) 13s normal forwards 1 running finishStepTitle;
+                                    color: #D6FFF7;
+                                    font-family: Montserrat;
+                                    font-weight: 500;
+                                    width: 90%;
+                                    font-size: 3.2vmax;
+                                    line-height: 1.4;
+                                    @media screen and (min-width: 1040px){ font-size: 40px};
+                              }
+
+                              .circle--subtitle{
+                                    opacity: 0;
+                                    position: absolute;
+                                    bottom: 10%;
+                                    text-align: center;
+                                    animation: 0.5s cubic-bezier(0.46, 0.19, 1, 0.74) 13s normal forwards 1 running finishStepTitle;
+                                    color: #D6FFF7;
+                                    font-family: Montserrat;
+                                    font-weight: 500;
+                                    width: 90%;
+                                    font-size: 3.2vmax;
+                                    line-height: 1.4;
+                                    @media screen and (min-width: 1040px){ font-size: 40px};
+                              }
+
+                              .circle__logo{
+                                    @media screen and (min-width: 1040px){ 
+                                          width: 17vw;
+                                          height: 20vw;
+                                    }
+                                    width: 45vw;
+                                    height: 45vw;
+                                    border-radius: 50%;
+                                    position: relative;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+
+                                    .logo-1{
+                                          opacity: 0;
+                                          position: absolute;
+                                          width: 60%;
+                                          animation: 4s ease 3s normal none 1 running step1;
+                                    }
+
+                                    .logo-2{
+                                          opacity: 0;
+                                          position: absolute;
+                                          width: 60%;
+                                          animation: 4s ease 6.5s normal none 1 running step1;
+                                    }
+
+                                    .logo-3{
+                                          opacity: 0;
+                                          position: absolute;
+                                          width: 60%;
+                                          animation: 4s ease 10s normal none 1 running step1;
+                                    }
+
+                                    .logo-4{
+                                          opacity: 0;
+                                          position: absolute;
+                                          animation: 0.5s cubic-bezier(0.46, 0.19, 1, 0.74) 13s normal forwards 1 running finishStep;
+                                    }
+
+                                    @keyframes step1 {
+                                          0% {
+                                                opacity: 0;
+                                          }
+                                          50% {
+                                                opacity: 1;
+                                          }
+                                          100%{
+                                                opacity: 0;
+                                          }
+                                    }
+                                    @keyframes finishStep {
+                                          0% {
+                                                opacity: 0;
+                                                width: 90%;
+                                          }
+                                          100% {
+                                                opacity: 1;
+                                                width: 140%;
+                                          }
+                                    }
+
+                                    @keyframes finishStepTitle {
+                                          0% {
+                                                opacity: 0;;
+                                          }
+                                          100% {
+                                                opacity: 1;
+                                          }
+                                    }
+                              }
+                        }
+                  }
+            }
+      }
+
+      .main__content{
+            height: 95%;
+            width: 95%;
+            max-width: 400px;
+            max-height: 625px;
+            min-width: 300px;
+            min-height: 540px;
+            border-radius: 42px;
+            background: #bcc7cb;
+            overflow: hidden;
+            box-shadow: 0px 0px 8px 0px black;
+
+            @media screen and (min-width: 1040px){
+                  max-height: 445px;
+                  max-width: 575px;
+                  background: transparent;
+                  min-height: 400px;
+                  margin-top: 10%;
+                  box-shadow: 0px 0px 8px 0px #393434;
+            }
+
+            &.disable{
+                  filter: blur(6px);
+            }
+
+            .main__card{
+                  height: 100%;
+                  width: 100%;
+                  background: url(../img/main-bg.png);
+                  background-size: cover;
+            }
+      }
+
+      .card{
+            .card__content{
+                  position: relative;
+                  height: 100%;
+                  width: 100%;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+
+                  .card__bakground{
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        @media screen and (min-width: 1040px){
+                              filter: blur(5px);
+                              background: linear-gradient(45deg, #ffffff2b, #ffffff7d) ,url(../img/desktop_bg.png);
+                              background-position: 48% 34%;
+                              background-size: 271%;
+                              opacity: 0.8;
+                              background-repeat: no-repeat;
+                        }
+                  }
+                  .card__logo-container{
+                        position: absolute;
+                        top: 10%;
+                        @media screen and (min-width: 1040px){top:15%}
+                        display: flex;
+                        justify-content: center;
+                        height: max-content;
+
+                        .card--logo{
+                              width: 60%;
+                              @media screen and (min-width: 1040px){width: 70%;}
+                        }
+                  }
+
+                  .card__title-container{
+                        position: absolute;
+                        top: 30%;
+                        @media screen and (min-width: 1040px){top:35%}
+                        width: 90%;
+
+                        .card--title{
+                              color: #535659;
+                              font-family: Montserrat;
+                              font-size: calc(15px + 1vmax);
+                              font-weight: 400;
+                              line-height: 1.6;
+                              text-align: center;
+                              @media screen and (min-width: 1040px){
+                                    font-size: 18px;
+                                    margin-top: 15px;
+                              }
+                        }
+                  }
+
+                  .card__button-container{
+                        position: absolute;
+                        bottom: 10%;
+                        width: 100%;
+                        display: flex;
+                        justify-content: center;
+
+                        .card--btn{
+                              cursor: pointer;
+                              border-radius: 32px;
+                              border: 1px solid #707070;
+                              background-image: linear-gradient(180deg, #138871 0%, #0a4439 100%);
+                              color: #ffffff;
+                              font-family: Montserrat;
+                              font-weight: 500;
+                              width: 80%;
+                              padding: 1.2vmax;
+                              @media screen and (min-width: 1040px){
+                                    width: 50%;
+                                    padding: 10px;
+                              }
+                              &:focus {
+                                    outline: none;
+                              }
+                        }
+                  }
+
+                  .card__form-container{
+                        position: absolute;
+                        top: 57%;
+                        @media screen and (min-width: 1040px){top:65%}
+                        width: 85%;
+                        @media screen and (min-width: 1040px){
+                              display: flex;
+                              display: flex;
+                              justify-content: space-between;
+                              align-items: center;
+                              width: 80%;
+                        };
+
+                        .form__input {
+                              position: relative;
+                              margin-bottom: 10%;
+                              @media screen and (min-width: 1040px){
+                                    margin-bottom: 1%;
+                                    width: 45%;
+                              };
+                              input {
+                                    font-size: 2.7vmax;
+                                    padding: 3% 3% 1%;
+                                    display: block;
+                                    width: 90%;
+                                    border: none;
+                                    border-bottom: 1px solid #a6a6a6;
+                                    background: transparent;
+                                    font-family: Montserrat;
+                                    @media screen and (min-width: 1040px){
+                                          font-size: 15px;
+                                    }
+
+                                    &:focus {
+                                          outline: none;
+                                    }
+                              }
+                              label {
+                                    font-family: Montserrat;
+                                    color: #6b6f73;
+                                    font-size: 2.6vmax;
+                                    position: absolute;
+                                    pointer-events: none;
+                                    left: 1.5vmax;
+                                    top: 1.5vmax;
+                                    transition: 0.2s ease all;
+                                    -moz-transition: 0.2s ease all;
+                                    -webkit-transition: 0.2s ease all;
+                                    
+                                    @media screen and (min-width: 1040px){
+                                          left: 0.5vmax;
+                                          top: 0;
+                                          font-size: 16px;
+                                    }
+                              }
+                              
+                              input:focus ~ label, input:valid ~ label {
+                                    top: -1.7vmax;
+                                    left: 0.5vmax;
+                                    font-size: 2.2vmax;
+                                    color: #6b6f73;
+
+                                    @media screen and (min-width: 1040px){
+                                          left: 0;
+                                          top: -15px;
+                                          font-size: 14px;
+                                    }
+                              }
+                              
+                              .bar {
+                                    position: relative;
+                                    display: block;
+                                    width: 100%;;
+                              }
+                              
+                              .bar:before, .bar:after {
+                              content: "";
+                                    height: 1px;
+                                    width: 0;
+                                    bottom: 0;
+                                    position: absolute;
+                                    background: #b4b2b2;
+                                    transition: 0.2s ease all;
+                                    -moz-transition: 0.2s ease all;
+                                    -webkit-transition: 0.2s ease all;
+                              }
+                              .bar:before {
+                                    left: 50%;
+                              }
+                              .bar:after {
+                                    right: 50%;
+                              }
+                              
+                              input:focus ~ .bar:before,
+                              input:focus ~ .bar:after {
+                                    width: 50%;
+                              }
+                        }
+                  }
+            }
+      }
+}
+
+#error-output{
+      position: absolute;
+      right: 2%;
+      bottom: 2%;
+
+      span{
+            font-family: Montserrat;
+            font-size: calc(6px + 1vmax);
+            color: #E14818;
+      }
+}
