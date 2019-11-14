@@ -1,123 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <script
-  src="https://code.jquery.com/jquery-3.4.1.js"
-  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-  crossorigin="anonymous"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>      
-    <link rel="stylesheet" href="style.css">
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
-    <div class="main__loader">
-        <div class="loader">
-            <div class="c-lvl-1"></div>
-            <div class="c-lvl-2"></div>
-            <div class="c-lvl-3"></div>
-            <div class="c-lvl-info">
-                <h2 class="info--title">Вашу <b>ВИГОДУ</b> від <b>Steko</b> ми вже загорнули та відправили в <b>sms</b>.
-                        </h2>
-                <div class="loader-logo">
-                    <img src="img/logo-loader.png" alt="" class="move-1">
-                    <img src="img/logo-loader-2.png" alt="" class="move-2">
-                    <img src="img/logo-final.png" alt=""class="move-3">
-                    <img src="img/loader-check.png" alt="" class="move-4">
-                </div>
-                <h2 class="info--subtitle">
-                        Ідеальних покупок зі <b>Steko</b>!
-                </h2>
-            </div>
-        </div>
-    </div>
-    <div class="main grey darken-1">
-        <div class="main__content row">
-            <div class="content__card card col s12">
-                <div class="card__bg"></div>
-                <div class="card__content">
-                    <div class="card__logo-part">
-                        <img src="img/logo.png" alt="logo" class="card--logo">
-                    </div>
-                    <div class="card__title-part">
-                        <h1 class="card--title">Введіть ім'я та номер телефону, щоб отримати <b>ВИГОДУ</b> від <b>Steko</b></h1>
-                    </div>
-                    <div class="card__from">
-                        <div class="input__container row">
-                            <div class="input-field col s12">
-                              <input id="name" type="text" class="validate">
-                              <label for="name">Iм'я</label>
-                            </div>
-                          </div>
-                          <div class="input__container row">
-                            <div class="input-field col s12">
-                              <input id="phone" type="text" class="validate">
-                              <label for="phone">Телефон</label>
-                            </div>
-                          </div>
-                        <button class="card--button">Отримати промокод</button>
+      <main class="content">
+            <div id="loader" class="main__loader">
+                  <div class="loader">
+                        <div class="loader__circle lvl-1"></div>
+                        <div class="loader__circle lvl-2"></div>
+                        <div class="loader__circle lvl-3"></div>
+                        <div class="loader__circle lvl-content">
+                              <h3 class="circle--title">
+                                    Вашу <b>ВИГОДУ</b> від <b>Steko</b> ми вже загорнули та відправили в <b>sms</b>.
+                              </h3>
+                              <div class="circle__logo">
+                                    <img src="img/logo-loader.png" alt="logo" class="logo-1 step-start">
+                                    <img src="img/logo-loader-2.png" alt="logo" class="logo-2 step-load">
+                                    <img src="img/logo-final.png" alt="logo" class="logo-3 step-finish">
+                                    <img src="img/loader-check.png" alt="logo" class="logo-4 step-check">
+                              </div>
+                              <h3 class="circle--subtitle">
+                                    Ідеальних покупок зі <b>Steko</b>!
+                              </h3>
                         </div>
-                </div>
+                  </div>
             </div>
-        </div>
-    </div>
-
-    <script>
-        $(document).ready(function(){
-            const showLoader = () => {
-                setTimeout(() => $('.move-1').show("fade", 1500), 500);
-                setTimeout(() => $('.move-1').fadeOut(1000), 2500);
-                setTimeout(() => $('.move-2').show("fade", 1500), 3500);
-                setTimeout(() => $('.move-2').fadeOut(1000), 5000);
-                setTimeout(() => $('.move-3').show('fade', 1500), 7000);
-                setTimeout(() => $('.move-3').fadeOut(500), 10000);
-                setTimeout(() => {
-                    $('.move-4').show(1500);
-                    $('.loader').addClass('active');
-                    $('.c-lvl-info .info--title').fadeIn(1000);
-                    $('.c-lvl-info .info--subtitle').fadeIn(1000);
-                    }, 10000);
-            };
-
-             
-            $('.card--button').on('click', function(){
-                // Получаем данные клиента
-                let data = {
-                    phoneNumber: $('#phone').val(),
-                    clientName: $('#name').val()
-                };
-
-                // Отправляем данные на проверку
-                $.ajax({
-                    url: 'http://httpbin.org/post',
-                    method: `post`,
-                    data: data,
-                    success: function (result) {
-                        // Если номер есть в базе сообщаем об ошибке
-                        if(result.hasReg){
-                            alert('Номер уже использовался');
-                        // Если все ОК, запускеаться анимация лоадера
-                        }else{
-                            $('.main').addClass('disabled');
-                            $('.main__loader').addClass('active');
-
-                            setTimeout(showLoader, 500);
-                        }
-                    }
-                })
-            })
-            
-
-               
-
-        });
-    </script>
+            <div id="content" class="main__content">
+                  <div class="main__card card">
+                        <div class="card__content">
+                              <div class="card__bakground"></div>
+                              <div class="card__logo-container">
+                                    <img src="img/logo.png" alt="logo" class="card--logo">
+                              </div>
+                              <div class="card__title-container">
+                                    <h1 class="card--title">
+                                          Введіть ім'я та номер телефону, щоб отримати <b>ВИГОДУ</b> від <b>Steko</b>
+                                    </h1>
+                              </div>
+                              <div class="card__form-container">
+                                    <div class="form__input">
+                                          <input id="name" type="text" required>
+                                          <span class="bar"></span>
+                                          <label class="">Ім'я</label>
+                                    </div>
+                                    <div class="form__input">      
+                                          <input id="phone" type="text" required>
+                                          <span class="bar"></span>
+                                          <label class="">Номер телефону</label>
+                                    </div>
+                                    <div id="error-output"></div>
+                              </div>
+                              <div class="card__button-container">
+                                    <button id='button' class="card--btn">Отримати промокод</button>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+      </main>
+      <script src="script/script.js"></script>
 </body>
 </html>
