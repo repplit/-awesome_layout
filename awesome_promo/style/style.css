@@ -672,9 +672,24 @@
   bottom: 2%;
 }
 
+@media screen and (min-width: 1040px) {
+  #error-output {
+    right: 10px;
+    bottom: -26px;
+    width: 100%;
+    text-align: right;
+  }
+}
+
 #error-output span {
   font-family: Montserrat;
   font-size: calc(6px + 1vmax);
   color: #E14818;
+}
+
+@media screen and (min-width: 1040px) {
+  #error-output span {
+    font-size: 15px;
+  }
 }
 /*# sourceMappingURL=style.css.map */
