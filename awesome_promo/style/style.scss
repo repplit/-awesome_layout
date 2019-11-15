@@ -386,6 +386,10 @@
                                     &:focus {
                                           outline: none;
                                     }
+
+                                    &.error{
+                                          border-bottom: 1px solid #E14818;
+                                    }
                               }
                               label {
                                     font-family: Montserrat;
@@ -472,3 +476,5 @@
             }
       }
 }
+
+

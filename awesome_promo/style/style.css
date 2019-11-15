@@ -599,6 +599,10 @@
   outline: none;
 }
 
+.content .card .card__content .card__form-container .form__input input.error {
+  border-bottom: 1px solid #E14818;
+}
+
 .content .card .card__content .card__form-container .form__input label {
   font-family: Montserrat;
   color: #6b6f73;
