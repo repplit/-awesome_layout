@@ -1,31 +1,42 @@
+
+let phone = document.querySelector('#phone');
+      phone.addEventListener('focus', ()=>{
+            phone.value = '+380';
+});
+
+const startLoader = () =>{
+      document.getElementById('loader').classList.add('active');
+      document.getElementById('content').classList.add('disable');
+}
+// Сбор данных для отправки
 const createData = () => {
       data = {};
       data.name = validName(document.querySelector('#name').value);
       data.phone = validPhone(document.querySelector('#phone').value);
-      data.region =  window.location.search.replace( '?', '');
+      data.region =  window.location.search.replace('=', '');
 
       return data;
 }
+// Проверка на число
+const isNumber = (n) =>  !isNaN(parseFloat(n)) && !isNaN(n - 0);
 
+// Проверка валидности номера
 const validPhone = (phone) => {
-      const isNumber = (n) =>  !isNaN(parseFloat(n)) && !isNaN(n - 0);
-
-      if(phone.length > 10){
+      if(phone.length >= 10 && isNumber(phone)){
             return phone.substr(-10);
       }else if(phone.length < 10 ){
-            return false;
-      }else if(!isNumber(phone)){
             return false;
       }
 };
 
-const validName = (name) => (name.length > 2) ? name : false;
+// Проверка валидности имени  
+const validName = (name) => (name.length > 2 && !isNumber(name)) ? name : false;
 
-
+// коструктор ошибок
 const createError = (status) =>{
       let errorMessege = {
             nameError: 'Недопустимое имя',
-            phoneFormatError: 'Непраильный формат телефона',
+            phoneFormatError: 'Неправильный формат телефона',
             phoneError: 'Номер телефона уже зарегестрирован'
       };
 
@@ -35,11 +46,23 @@ const createError = (status) =>{
       setTimeout(()=>{errorArea.innerHTML = ''}, 5000);
 };
 
+// Функция запроса на сервер
+const post = (url, data) =>{
+      return fetch(url,{
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: new Headers({
+                  'Content-Type': 'application/json'
+                }),
+      })
+      .then(response => response.json());
+}
+
+// Функция отпрвки данных 
 const sendData = async () =>{
       let data = createData();
-      let url = 'http://httpbin.org/post';
+      let url = 'http://httpbin.org/post'; // тестовый адрес
       
-
       if(!data.name){
             createError('nameError');
             return;
@@ -48,20 +71,20 @@ const sendData = async () =>{
             return;
       }
 
-      try {
-            const response = await fetch(url, {
-                  method: 'POST', 
-                        body: JSON.stringify(data), 
-                        headers: {
-                              'Content-Type': 'application/json'
-                  }
-            });
-
-            document.querySelector('#content').classList.add('disable');
-            document.querySelector('#loader').classList.add('active');
-      } catch (error) {
-            createError(phoneError);
-      }
+      // Отправка и обработка ответа
+      post(url, data)
+            // обрабатываем результат вызова 
+            .then((data)=>{
+                  console.log(data);
+                  startLoader();
+            })
+            .catch(error => console.error(error))
 }
+
 let button = document.querySelector('#button');
+
+// Событие для запуска
 button.addEventListener('click', sendData);
+
+
+
